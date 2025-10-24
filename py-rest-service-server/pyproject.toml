@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "py-rest-service-server"
+version = "0.1.0"
+description = "PyRestService Production Server Component"
+authors = [
+    { name = "Ybor Technology <support@ybor.ai>" }
+]
+
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "uvicorn[standard]>=0.24.0",
+    "prometheus-client>=0.17.0",
+    "structlog>=23.1.0",
+    "pydantic-settings>=2.0.0",
+    "py-rest-service-api",
+    "py-rest-service-persistence",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.6.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ybor_technologies"]
+
+[project.scripts]
+"py-rest-service-server" = "ybor_technologies.big_rooster.py_rest.service.server.main:main" 
+
+[tool.uv.sources]
+py-rest-service-api = { path = "../py-rest-service-api", editable = true }
+py-rest-service-persistence = { path = "../py-rest-service-persistence", editable = true }
