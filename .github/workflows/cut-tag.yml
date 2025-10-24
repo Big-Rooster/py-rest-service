@@ -61,7 +61,7 @@ jobs:
         with:
           image-name: py-rest-service-server
           image-tag: ${{ steps.cut-tag.outputs.version }}
-          registry: ybor-technologies-big-rooster-docker-local/applications
+          registry: ${{ vars.ARTIFACTORY_PROJECT }}-docker-local/applications
           push: true
           version: ${{ steps.cut-tag.outputs.version }}
 

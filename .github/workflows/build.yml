@@ -8,7 +8,7 @@ name: Build
 
 env:
   DOCKER_REGISTRY: ${{ vars.ARTIFACTORY_HOSTNAME }}
-  DOCKER_REPOSITORY: ybor-technologies-big-rooster-docker-local/applications
+  DOCKER_REPOSITORY: ${{ vars.ARTIFACTORY_PROJECT }}-docker-local/applications
   IMAGE_NAME: py-rest-service
 
 jobs:

@@ -28,7 +28,7 @@ jobs:
       - name: Get Image Digest
         id: get-digest
         run: |
-          DIGEST=$(docker manifest inspect ${{ vars.ARTIFACTORY_HOSTNAME }}/ybor-technologies-big-rooster-docker-local/applications/py-rest-service-server:${{ inputs.tag }} | jq -r '.config.digest')
+          DIGEST=$(docker manifest inspect ${{ vars.ARTIFACTORY_HOSTNAME }}/${{ vars.ARTIFACTORY_PROJECT }}-docker-local/applications/py-rest-service-server:${{ inputs.tag }} | jq -r '.config.digest')
           echo "digest=$DIGEST" >> $GITHUB_OUTPUT
 
       - name: Update Application Manifest
